@@ -5,7 +5,7 @@ ThemeData theme(BuildContext context) {
 } 
 
 class ColorThemeProvider extends ChangeNotifier {
-  Color color = Colors.blue;
+  Color color = Color.fromARGB(255, 71, 161, 106);
   set setColor(Color color) {
     this.color = color;
     notifyListeners();

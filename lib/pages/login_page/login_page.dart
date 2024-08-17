@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                 (value) => {
                   loginState = 0,
                   Provider.of<ColorThemeProvider>(context, listen: false)
-                      .setColor = Colors.blue,
+                      .setColor = Color.fromARGB(255, 64, 136, 73),
                 },
               );
             }

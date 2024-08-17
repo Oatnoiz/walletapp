@@ -43,42 +43,42 @@ class _HomePageState extends State<HomePage>
       });
     });
 
-    FirebaseAuth.instance.currentUser!.getIdToken().then(
-      (value) {
-        if (value != null) {
-          serverPeriodic = Timer.periodic(1.seconds, getMoneyData);
-        }
-      },
-    );
+  //   FirebaseAuth.instance.currentUser!.getIdToken().then(
+  //     (value) {
+  //       if (value != null) {
+  //         serverPeriodic = Timer.periodic(1.seconds, getMoneyData);
+  //       }
+  //     },
+  //   );
   }
 
-  Future<void> getMoneyData(Timer? timer) async {
-    http.Response res = await http.post(
-      Uri.parse('https://walletapp-server.vercel.app/server'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': '_',
-      },
-      body: jsonEncode({
-        'type': 'get',
-        'uid': user!.email,
-      }),
-    );
-    moneyData.moneyData = [];
-    List<dynamic> dres = json.decode(res.body);
-    try {
-      for (var value in dres) {
-        moneyData.moneyData!.add(
-          EachMoneyDataModel(
-            time: value['time'],
-            type: value['type'],
-            money: value['money'],
-          ),
-        );
-      }
-    } catch (e) {}
-    setState(() {});
-  }
+  // Future<void> getMoneyData(Timer? timer) async {
+  //   http.Response res = await http.post(
+  //     Uri.parse('https://walletapp-server.vercel.app/server'),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': '_',
+  //     },
+  //     body: jsonEncode({
+  //       'type': 'get',
+  //       'uid': user!.email,
+  //     }),
+  //   );
+  //   moneyData.moneyData = [];
+  //   List<dynamic> dres = json.decode(res.body);
+  //   try {
+  //     for (var value in dres) {
+  //       moneyData.moneyData!.add(
+  //         EachMoneyDataModel(
+  //           time: value['time'],
+  //           type: value['type'],
+  //           money: value['money'],
+  //         ),
+  //       );
+  //     }
+  //   } catch (e) {}
+  //   setState(() {});
+  // }
 
   @override
   void dispose() {

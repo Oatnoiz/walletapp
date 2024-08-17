@@ -5,7 +5,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:wallet_app/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart' as http;
 import 'package:nfc_manager/nfc_manager.dart';
 
 //models
@@ -196,23 +195,6 @@ class _TopupState extends State<Topup> {
             ),
             ElevatedButton(
               onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  await http.post(
-                    Uri.parse('https://walletapp-server.vercel.app/server'),
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': '_',
-                    },
-                    body: jsonEncode({
-                      'type': 'topup',
-                      'uid': FirebaseAuth.instance.currentUser!.email,
-                      'amount': amount,
-                    }),
-                  );
-                  () {
-                    Navigator.pop(context);
-                  }();
-                }
               },
               child: const Text('Submit'),
             ),
@@ -306,23 +288,6 @@ class _PayState extends State<Pay> {
             ),
             ElevatedButton(
               onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  await http.post(
-                    Uri.parse('https://walletapp-server.vercel.app/server'),
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Authorization': '_',
-                    },
-                    body: jsonEncode({
-                      'type': 'topup',
-                      'uid': FirebaseAuth.instance.currentUser!.email,
-                      'amount': amount,
-                    }),
-                  );
-                  () {
-                    Navigator.pop(context);
-                  }();
-                }
               },
               child: const Text('Submit'),
             ),
